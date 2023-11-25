@@ -1,7 +1,7 @@
 FROM eclipse-temurin:8-jre
 
-RUN mkdir -p /todo-server
-WORKDIR /todo-server
+RUN mkdir -p /todo_admin
+WORKDIR /todo_admin
 
 ## 将Jar 文件复制到镜像中
 COPY ./target/todo_admin-0.0.1-SNAPSHOT.jar app.jar
