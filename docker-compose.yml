@@ -16,10 +16,10 @@ services:
       - ./sql/todo_init.sql:/docker-entrypoint-initdb.d/todo_init.sql:ro
 
   server:
-    container_name: todo-server
+    container_name: todo_admin
     build:
-      context: ./todo-server/
-    image: todo-server
+      context: ./todo_admin/
+    image: todo_admin
     restart: unless-stopped
     ports:
       - "8080:8080"
@@ -39,14 +39,14 @@ services:
       - mysql
 
   web:
-    container_name: todo-web
+    container_name: todo_vue
     build:
-      context: ./todo-web
+      context: ./todo_vue
       args:
         NODE_ENV:
           ENV=${NODE_ENV:-production}
           VUE_APP_TITLE=${VUE_APP_TITLE:-SSADMIN管理系统}
-    image: todo-web
+    image: todo_vue
     restart: unless-stopped
     ports:
       - "80:80"
